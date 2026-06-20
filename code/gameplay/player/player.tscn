@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://coho61s7devlj"]
+
+[ext_resource type="Script" uid="uid://embl3uryfjgi" path="res://code/gameplay/player/player.gd" id="1_74kp1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2xxe"]
+radius = 42.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1790078715]
+script = ExtResource("1_74kp1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=895529121]
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 33.0
+offset_bottom = 33.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=889126652]
+shape = SubResource("CircleShape2D_f2xxe")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1615252274]
