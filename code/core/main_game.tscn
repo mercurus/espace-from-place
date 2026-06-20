@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cl34t5wygyl2q" path="res://code/core/main_game.gd" id="1_aldqj"]
 [ext_resource type="PackedScene" uid="uid://1gk7kx2p4msl" path="res://code/gameplay/enemies/pushable.tscn" id="2_5s2p2"]
 [ext_resource type="PackedScene" uid="uid://coho61s7devlj" path="res://code/gameplay/player/player.tscn" id="2_i4a04"]
+[ext_resource type="PackedScene" uid="uid://dq2vvgx6d3yih" path="res://code/gameplay/objects/fixed_dealio.tscn" id="4_yyad3"]
 
 [node name="MainGame" type="Node" unique_id=1234707930]
 script = ExtResource("1_aldqj")
@@ -15,17 +16,50 @@ process_mode = 1
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=380944460]
 
 [node name="ColorRect" type="ColorRect" parent="World/LevelRoot" unique_id=68282118]
-offset_right = 762.0
-offset_bottom = 467.0
+offset_right = 1600.0
+offset_bottom = 1200.0
 color = Color(1, 0, 0, 1)
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=1458252498]
 
 [node name="Player" parent="World/EntityRoot" unique_id=779665878 instance=ExtResource("2_i4a04")]
 position = Vector2(208, 155)
+knockback_friction = 800.0
+knockback_force = 50.0
+friction = 800.0
 
 [node name="Pushable" parent="World/EntityRoot" unique_id=2013581968 instance=ExtResource("2_5s2p2")]
-position = Vector2(381, 169)
+position = Vector2(224, 761)
+
+[node name="Pushable2" parent="World/EntityRoot" unique_id=979537178 instance=ExtResource("2_5s2p2")]
+position = Vector2(573, 170)
+
+[node name="Pushable3" parent="World/EntityRoot" unique_id=828612729 instance=ExtResource("2_5s2p2")]
+position = Vector2(447, 664)
+
+[node name="Pushable4" parent="World/EntityRoot" unique_id=239960629 instance=ExtResource("2_5s2p2")]
+position = Vector2(322, 481)
+
+[node name="Pushable5" parent="World/EntityRoot" unique_id=23585848 instance=ExtResource("2_5s2p2")]
+position = Vector2(756, 241)
+
+[node name="Pushable6" parent="World/EntityRoot" unique_id=1999581259 instance=ExtResource("2_5s2p2")]
+position = Vector2(861, 485)
+
+[node name="Pushable7" parent="World/EntityRoot" unique_id=408663417 instance=ExtResource("2_5s2p2")]
+position = Vector2(585, 535)
+
+[node name="Pushable8" parent="World/EntityRoot" unique_id=424146709 instance=ExtResource("2_5s2p2")]
+position = Vector2(749, 826)
+
+[node name="FixedDealio" parent="World/EntityRoot" unique_id=1078567474 instance=ExtResource("4_yyad3")]
+position = Vector2(887, 266)
+
+[node name="FixedDealio2" parent="World/EntityRoot" unique_id=360869259 instance=ExtResource("4_yyad3")]
+position = Vector2(982, 463)
+
+[node name="FixedDealio3" parent="World/EntityRoot" unique_id=153016021 instance=ExtResource("4_yyad3")]
+position = Vector2(842, 909)
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=1556630068]
 
@@ -35,16 +69,20 @@ position = Vector2(381, 169)
 process_mode = 1
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -42.0
+offset_top = 21.0
+offset_right = -2.0
+offset_bottom = 61.0
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=215144031]
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=417894352]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -51.0
+offset_top = 11.0
+offset_right = -11.0
+offset_bottom = 51.0
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=675410591]
 
@@ -52,5 +90,7 @@ offset_bottom = 40.0
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -49.0
+offset_top = 18.0
+offset_right = -9.0
+offset_bottom = 58.0
