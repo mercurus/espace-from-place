@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://1gk7kx2p4msl" path="res://code/gameplay/enemies/pushable.tscn" id="2_5s2p2"]
 [ext_resource type="PackedScene" uid="uid://coho61s7devlj" path="res://code/gameplay/player/player.tscn" id="2_i4a04"]
 [ext_resource type="PackedScene" uid="uid://dq2vvgx6d3yih" path="res://code/gameplay/objects/fixed_dealio.tscn" id="4_yyad3"]
+[ext_resource type="PackedScene" uid="uid://dv010x3aa8mas" path="res://code/gameplay/objects/cspg.tscn" id="5_1hokm"]
+[ext_resource type="PackedScene" uid="uid://tcibfcf316d8" path="res://code/gameplay/components/xt_hud.tscn" id="6_pmubr"]
+[ext_resource type="PackedScene" uid="uid://bvvco1vmgtxkf" path="res://code/gameplay/objects/geyser.tscn" id="6_ti5ek"]
 
 [node name="MainGame" type="Node" unique_id=1234707930]
 script = ExtResource("1_aldqj")
@@ -23,10 +26,8 @@ color = Color(1, 0, 0, 1)
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=1458252498]
 
 [node name="Player" parent="World/EntityRoot" unique_id=779665878 instance=ExtResource("2_i4a04")]
+z_index = 1
 position = Vector2(208, 155)
-knockback_friction = 800.0
-knockback_force = 50.0
-friction = 800.0
 
 [node name="Pushable" parent="World/EntityRoot" unique_id=2013581968 instance=ExtResource("2_5s2p2")]
 position = Vector2(224, 761)
@@ -61,18 +62,36 @@ position = Vector2(982, 463)
 [node name="FixedDealio3" parent="World/EntityRoot" unique_id=153016021 instance=ExtResource("4_yyad3")]
 position = Vector2(842, 909)
 
+[node name="CSPG" parent="World/EntityRoot" unique_id=1688478759 instance=ExtResource("5_1hokm")]
+position = Vector2(851, 638)
+debug = false
+
+[node name="Geyser" parent="World/EntityRoot" unique_id=1579410989 instance=ExtResource("6_ti5ek")]
+position = Vector2(1265, 243)
+debug = false
+
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=1556630068]
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=1238801329]
+layer = 5
+follow_viewport_enabled = true
 
 [node name="HudRoot" type="Control" parent="HudLayer" unique_id=828929542]
 process_mode = 1
+z_index = 5
 layout_mode = 3
-anchors_preset = 0
-offset_left = -42.0
-offset_top = 21.0
-offset_right = -2.0
-offset_bottom = 61.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" parent="HudLayer/HudRoot" unique_id=317660793 instance=ExtResource("6_pmubr")]
+layout_mode = 0
+offset_left = 1023.0
+offset_top = 803.0
+offset_right = 1232.0
+offset_bottom = 837.0
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=215144031]
 
@@ -94,3 +113,8 @@ offset_left = -49.0
 offset_top = 18.0
 offset_right = -9.0
 offset_bottom = 58.0
+
+[connection signal="change_xt" from="World/EntityRoot/Player" to="World/EntityRoot/CSPG" method="_on_player_change_xt"]
+[connection signal="area_entered" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_area_entered"]
+[connection signal="area_exited" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_area_exited"]
+[connection signal="xt_changed" from="World/EntityRoot/CSPG" to="HudLayer/HudRoot/Label" method="_on_cspg_xt_changed"]

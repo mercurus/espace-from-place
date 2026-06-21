@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dv010x3aa8mas"]
+
+[ext_resource type="Script" uid="uid://ba8f0th06snoe" path="res://code/gameplay/objects/cspg.gd" id="1_rls3y"]
+[ext_resource type="Script" uid="uid://dh2bkinobp4y4" path="res://code/gameplay/objects/draw_nether_field.gd" id="2_i4ok5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ynfqq"]
+radius = 132.53
+
+[node name="CSPG" type="Area2D" unique_id=1688478759]
+script = ExtResource("1_rls3y")
+debug = true
+nether_field_size = 200.0
+
+[node name="Nether Field" type="CollisionShape2D" parent="." unique_id=1763274868]
+shape = SubResource("CircleShape2D_ynfqq")
+script = ExtResource("2_i4ok5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=102774059]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0.38431373, 0.57254905, 0.83137256, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1510114552]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -11.5
+offset_right = 20.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "CSPG"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_nether_field_entered"]
+[connection signal="area_exited" from="." to="." method="_on_nether_field_exited"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
