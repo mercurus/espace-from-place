@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bvvco1vmgtxkf"]
+
+[ext_resource type="Script" uid="uid://qdwdgyemda0c" path="res://code/gameplay/objects/geyser.gd" id="1_rqxl3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqxl3"]
+radius = 75.0
+
+[node name="Geyser" type="Area2D" unique_id=1579410989]
+script = ExtResource("1_rqxl3")
+debug = true
+gas_remaining = 1000.0
+
+[node name="Building Area" type="CollisionShape2D" parent="." unique_id=457159387]
+shape = SubResource("CircleShape2D_rqxl3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1711387861]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.3254902, 0.21568628, 1)
+
+[connection signal="area_entered" from="." to="." method="_on_geyser_build_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_geyser_build_area_exited"]

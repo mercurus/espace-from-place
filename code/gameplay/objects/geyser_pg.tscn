@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cc58qrikbav6y"]
+
+[ext_resource type="Script" uid="uid://ifp7houwjlmt" path="res://code/gameplay/objects/geyser_pg.gd" id="1_7rv2k"]
+
+[node name="Geyser PG" type="ColorRect" unique_id=797559460]
+offset_right = 15.0
+offset_bottom = 15.0
+color = Color(0.69803923, 0.69411767, 0.69411767, 1)
+script = ExtResource("1_7rv2k")
