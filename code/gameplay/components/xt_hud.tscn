@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://pptf311bgs2e" path="res://xt_hud.gd" id="1_xx10b"]
 
-[node name="xt_hud" type="Label" unique_id=317660793]
+[node name="XtHud" type="Label" unique_id=317660793]
 offset_right = 209.0
 offset_bottom = 34.0
 theme_override_font_sizes/font_size = 24
