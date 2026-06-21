@@ -86,7 +86,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" parent="HudLayer/HudRoot" unique_id=317660793 instance=ExtResource("6_pmubr")]
+[node name="XtHud" parent="HudLayer/HudRoot" unique_id=317660793 instance=ExtResource("6_pmubr")]
 layout_mode = 0
 offset_left = 1023.0
 offset_top = 803.0
@@ -117,4 +117,4 @@ offset_bottom = 58.0
 [connection signal="change_xt" from="World/EntityRoot/Player" to="World/EntityRoot/CSPG" method="_on_player_change_xt"]
 [connection signal="area_entered" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_area_entered"]
 [connection signal="area_exited" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_area_exited"]
-[connection signal="xt_changed" from="World/EntityRoot/CSPG" to="HudLayer/HudRoot/Label" method="_on_cspg_xt_changed"]
+[connection signal="xt_changed" from="World/EntityRoot/CSPG" to="HudLayer/HudRoot/XtHud" method="_on_cspg_xt_changed"]
