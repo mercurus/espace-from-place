@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://tcibfcf316d8" path="res://code/gameplay/components/xt_hud.tscn" id="6_pmubr"]
 [ext_resource type="PackedScene" uid="uid://bvvco1vmgtxkf" path="res://code/gameplay/objects/geyser.tscn" id="6_ti5ek"]
 [ext_resource type="PackedScene" uid="uid://cc58qrikbav6y" path="res://code/gameplay/objects/geyser_pg.tscn" id="7_pew57"]
+[ext_resource type="Script" uid="uid://cckhmxqwdlfjr" path="res://code/gameplay/components/dialogue.gd" id="9_mqvxp"]
+[ext_resource type="PackedScene" uid="uid://bfe1tqx26rtcb" path="res://code/core/dialogue.tscn" id="10_mqvxp"]
 
 [node name="MainGame" type="Node" unique_id=1234707930]
 script = ExtResource("1_aldqj")
@@ -29,7 +31,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="World/EntityRoot" unique_id=779665878 instance=ExtResource("2_i4a04")]
 z_index = 1
-position = Vector2(208, 155)
+position = Vector2(1037, 649)
 
 [node name="Pushable" parent="World/EntityRoot" unique_id=2013581968 instance=ExtResource("2_5s2p2")]
 position = Vector2(224, 761)
@@ -69,7 +71,7 @@ position = Vector2(851, 638)
 debug = false
 
 [node name="Geyser" parent="World/EntityRoot" unique_id=1579410989 instance=ExtResource("6_ti5ek")]
-position = Vector2(162, 307)
+position = Vector2(1093, 516)
 debug = false
 
 [node name="GeyserPG" parent="World/EntityRoot/Geyser" unique_id=756198849 instance=ExtResource("7_pew57")]
@@ -90,6 +92,25 @@ offset_left = 13.0
 offset_top = 12.0
 offset_right = 222.0
 offset_bottom = 46.0
+
+[node name="Dialogue" type="Control" parent="HudLayer" unique_id=1724864388]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_mqvxp")
+
+[node name="Panel" parent="HudLayer/Dialogue" unique_id=193597712 instance=ExtResource("10_mqvxp")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 649.0
+offset_top = 843.0
+offset_right = 649.0
+offset_bottom = 843.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=215144031]
 

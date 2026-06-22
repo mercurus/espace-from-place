@@ -58,6 +58,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="." unique_id=1170700048]
 visible = false
+z_index = 5
 offset_left = 16.0
 offset_top = -60.0
 offset_right = 126.0
