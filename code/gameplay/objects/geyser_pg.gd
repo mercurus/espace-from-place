@@ -9,34 +9,43 @@ extends Area2D
 @export var deploy_ramp_time: float
 
 @export var xt_tick_charge_amount: int
-@export var xt_tick_time: float
+@export var xt_tick_rate: float
 
-var battery_charge_count: int = 0
+var battery_charge_amount: int = 0
 var is_deployed: bool = false
 
 
 func _ready() -> void:
 	deploy_geyser_pg()
+	$Panel/Label.text = "Battery: %s" % battery_charge_amount
 	
 func deploy_geyser_pg():
 	var tween = create_tween()
 		
 	progress_bar.visible = true
-	tween.tween_property(progress_bar, "value", 100, 1.0)
+	tween.tween_property(progress_bar, "value", 100, deploy_ramp_time)
 	await tween.finished
 	is_deployed = true
 	progress_bar.visible = false
-	xt_tick.start(xt_tick_time)
+	xt_tick.start(xt_tick_rate)
 
 func charge_battery():
-	battery_charge_count += xt_tick_charge_amount
-
-
+	battery_charge_amount += xt_tick_charge_amount
+	if battery_charge_amount >= max_battery_charge:
+		battery_charge_amount = max_battery_charge
+	$Panel/Label.text = "Battery: %s" % battery_charge_amount
+	charge_flash()
+	
+func charge_flash():
+	var tween = create_tween()
+	
+	tween.tween_property($ColorRect, "color", Color(0.66, 0.66, 1.0, 1), 0.1)
+	tween.tween_property($ColorRect, "color", Color("c3bec0"), 0.1)
+	
+		
 func _on_mouse_entered() -> void:
 	if is_deployed:
 		$Panel.visible = true
-
-
 
 func _on_mouse_exited() -> void:
 	if is_deployed:	
