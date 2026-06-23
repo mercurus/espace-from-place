@@ -10,7 +10,7 @@ script = ExtResource("1_rqxl3")
 debug = true
 gas_remaining = 1000.0
 
-[node name="Building Area" type="CollisionShape2D" parent="." unique_id=457159387]
+[node name="DeployArea" type="CollisionShape2D" parent="." unique_id=457159387]
 shape = SubResource("RectangleShape2D_l6a2e")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1711387861]
