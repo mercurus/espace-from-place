@@ -13,9 +13,9 @@ var xt_cell_count: int = 5
 signal change_xt
 
 func attack():
-	var attack = Attack.new()
-	attack.damage = 2
-	return attack
+	var new_attack = Attack.new()
+	new_attack.damage = 2
+	return new_attack
 
 func _physics_process(delta:float):
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
