@@ -19,9 +19,9 @@ var geyser_pg_count: int = 1
 signal change_xt
 
 func attack():
-	var attack = Attack.new()
-	attack.damage = 2
-	return attack
+	var new_attack = Attack.new()
+	new_attack.damage = 2
+	return new_attack
 
 func _physics_process(delta:float):
 	if xt_current > 0:

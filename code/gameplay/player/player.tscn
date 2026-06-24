@@ -23,6 +23,7 @@ shape = SubResource("CircleShape2D_f2xxe")
 [node name="Area2D" type="Area2D" parent="." unique_id=1615252274]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34807028]
+scale = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("2_qrvft")
