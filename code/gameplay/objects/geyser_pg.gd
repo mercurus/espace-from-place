@@ -1,6 +1,7 @@
 extends Area2D
 
-@onready var progress_bar = $ColorRect/ProgressBar
+@export var progress_bar: ProgressBar
+@export var geyser_sprite: Sprite2D
 @onready var xt_tick = $XtTick
 @onready var xt_tooltip = $Panel
 
@@ -18,7 +19,11 @@ var is_deployed: bool = false
 func _ready() -> void:
 	deploy_geyser_pg()
 	$Panel/Label.text = "Battery: %s" % battery_charge_amount
-	
+
+func _process(delta: float) -> void:
+	if is_deployed:
+		geyser_sprite.rotate(-0.03)
+
 func deploy_geyser_pg():
 	var tween = create_tween()
 		

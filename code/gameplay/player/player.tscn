@@ -2,17 +2,16 @@
 
 [ext_resource type="Script" uid="uid://embl3uryfjgi" path="res://code/gameplay/player/player.gd" id="1_74kp1"]
 [ext_resource type="Script" uid="uid://dl0rv3wy85tdk" path="res://code/gameplay/player/dynamic_camera.gd" id="2_qrvft"]
+[ext_resource type="Texture2D" uid="uid://bb1nekqu8n0ep" path="res://assets/images/sprites/station_A.png" id="3_i833x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2xxe"]
-radius = 42.0
+radius = 39.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1790078715]
 script = ExtResource("1_74kp1")
-xt_max = 1000
-xt_max_zone_charge = 200
-xt_charge_amount = 1
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=895529121]
+visible = false
 offset_left = -33.0
 offset_top = -33.0
 offset_right = 33.0
@@ -27,3 +26,6 @@ shape = SubResource("CircleShape2D_f2xxe")
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("2_qrvft")
+
+[node name="Ship" type="Sprite2D" parent="." unique_id=649227751]
+texture = ExtResource("3_i833x")

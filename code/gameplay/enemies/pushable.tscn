@@ -2,19 +2,24 @@
 
 [ext_resource type="Script" uid="uid://cfreqg54oqdst" path="res://code/gameplay/enemies/pushable.gd" id="1_iqtlu"]
 [ext_resource type="Script" uid="uid://c3ba6xxu8kitj" path="res://code/gameplay/components/hitbox_component.gd" id="1_pmk3n"]
+[ext_resource type="Texture2D" uid="uid://cm2eqhhag7lwx" path="res://assets/world/environment/scifiEnvironment_09.png" id="2_yxpgk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2xxe"]
-radius = 73.00685
+radius = 32.0
 
 [node name="Pushable" type="CharacterBody2D" unique_id=979537178]
 script = ExtResource("1_iqtlu")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=258006512]
+visible = false
 offset_left = -64.0
 offset_top = -65.0
 offset_right = 63.0
 offset_bottom = 62.0
 color = Color(1, 1, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2114999742]
+texture = ExtResource("2_yxpgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=322552170]
 shape = SubResource("CircleShape2D_f2xxe")

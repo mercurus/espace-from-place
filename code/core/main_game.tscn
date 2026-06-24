@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://tcibfcf316d8" path="res://code/gameplay/components/xt_hud.tscn" id="6_pmubr"]
 [ext_resource type="PackedScene" uid="uid://bvvco1vmgtxkf" path="res://code/gameplay/objects/geyser.tscn" id="6_ti5ek"]
 [ext_resource type="PackedScene" uid="uid://cc58qrikbav6y" path="res://code/gameplay/objects/geyser_pg.tscn" id="7_pew57"]
+[ext_resource type="PackedScene" uid="uid://du5jv7a3b6uft" path="res://code/gameplay/components/storm_timer.tscn" id="9_mqvxp"]
 [ext_resource type="PackedScene" uid="uid://bfe1tqx26rtcb" path="res://code/gameplay/components/dialogue.tscn" id="10_mqvxp"]
 
 [node name="MainGame" type="Node" unique_id=1234707930]
@@ -28,9 +29,9 @@ metadata/_edit_lock_ = true
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=1458252498]
 
-[node name="Player" parent="World/EntityRoot" unique_id=779665878 instance=ExtResource("2_i4a04")]
+[node name="Player" parent="World/EntityRoot" unique_id=779665878 groups=["Power Zone"] instance=ExtResource("2_i4a04")]
 z_index = 1
-position = Vector2(1037, 649)
+position = Vector2(1137, 649)
 xt_max = 1000.0
 xt_max_zone_charge = 200.0
 xt_charge_amount = 1.0
@@ -51,7 +52,7 @@ position = Vector2(322, 481)
 position = Vector2(756, 241)
 
 [node name="Pushable6" parent="World/EntityRoot" unique_id=1999581259 instance=ExtResource("2_5s2p2")]
-position = Vector2(861, 485)
+position = Vector2(1243, 649)
 
 [node name="Pushable7" parent="World/EntityRoot" unique_id=408663417 instance=ExtResource("2_5s2p2")]
 position = Vector2(585, 535)
@@ -78,6 +79,7 @@ position = Vector2(51, 52)
 debug = false
 
 [node name="GeyserPG" parent="World/EntityRoot/Geyser" unique_id=756198849 instance=ExtResource("7_pew57")]
+position = Vector2(0, -9)
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=1556630068]
 
@@ -97,24 +99,40 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 444.0
-offset_top = 32.0
+offset_top = 41.0
 offset_right = 981.0
-offset_bottom = 92.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StormTimer" parent="HudLayer/HudRoot" unique_id=1721867354 instance=ExtResource("9_mqvxp")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 569.0
+offset_top = 101.0
+offset_right = 834.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Dialogue" type="Control" parent="HudLayer" unique_id=1724864388]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -1.0
 offset_right = 844.0
-offset_bottom = 101.0
+offset_bottom = 100.0
 
 [node name="Panel" parent="HudLayer/Dialogue" unique_id=1419366722 instance=ExtResource("10_mqvxp")]
+visible = false
 layout_mode = 1
 offset_left = 327.0
-offset_top = 824.0
-offset_right = 327.0
-offset_bottom = 824.0
+offset_top = 866.0
+offset_right = 359.0
+offset_bottom = 841.0
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=215144031]
 

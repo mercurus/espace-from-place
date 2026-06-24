@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://du5jv7a3b6uft"]
+
+[ext_resource type="Script" uid="uid://c3k3brcfakhui" path="res://code/gameplay/components/storm_timer.gd" id="1_6fjk6"]
+
+[node name="StormTimer" type="Label" unique_id=1721867354]
+offset_right = 265.0
+offset_bottom = 85.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "SFsdf"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_6fjk6")
+
+[node name="Timer" type="Timer" parent="." unique_id=1001175496]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

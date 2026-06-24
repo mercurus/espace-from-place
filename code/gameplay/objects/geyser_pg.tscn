@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cc58qrikbav6y"]
 
 [ext_resource type="Script" uid="uid://ifp7houwjlmt" path="res://code/gameplay/objects/geyser_pg.gd" id="1_7rv2k"]
+[ext_resource type="Texture2D" uid="uid://bv1u073o1i23b" path="res://assets/images/sprites/meteor_detailedSmall.png" id="2_a1gg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywxc3"]
-size = Vector2(25, 25)
+size = Vector2(25, 21)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm8uq"]
 bg_color = Color(0, 0, 0, 1)
@@ -11,43 +12,31 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlmdw"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="GeyserPG" type="Area2D" unique_id=756198849]
+[node name="GeyserPG" type="Area2D" unique_id=756198849 node_paths=PackedStringArray("progress_bar", "geyser_sprite")]
 script = ExtResource("1_7rv2k")
+progress_bar = NodePath("ProgressBar")
+geyser_sprite = NodePath("GeyserSprite")
 hp = 100
 max_battery_charge = 1000
-deploy_ramp_time = 5.0
+deploy_ramp_time = 2.0
 xt_tick_charge_amount = 10
 xt_tick_rate = 2.0
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1949363469]
 z_index = 2
-position = Vector2(0.75, 0.75)
+position = Vector2(0.75, 0.5)
 shape = SubResource("RectangleShape2D_ywxc3")
 
-[node name="XtTick" type="Timer" parent="." unique_id=1619614791]
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1797511246]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.5
-offset_top = -12.5
-offset_right = 12.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(0.7647059, 0.74509805, 0.7529412, 1)
-
-[node name="ProgressBar" type="ProgressBar" parent="ColorRect" unique_id=1979971470]
-layout_mode = 1
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1979971470]
+custom_minimum_size = Vector2(25, 0)
 anchors_preset = -1
-anchor_top = 1.2
+anchor_top = 1.1600003
 anchor_right = 1.0
-anchor_bottom = 1.2
-offset_top = -3.5
+anchor_bottom = 1.1600003
+offset_left = -12.0
+offset_top = 13.0
+offset_right = 13.0
+offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_qm8uq")
@@ -55,6 +44,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mlmdw")
 step = 1.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="XtTick" type="Timer" parent="." unique_id=1619614791]
+
+[node name="GeyserSprite" type="Sprite2D" parent="." unique_id=747822327]
+position = Vector2(1, 0.50000024)
+scale = Vector2(0.421875, 0.3203125)
+texture = ExtResource("2_a1gg7")
+
+[node name="Control" type="Control" parent="." unique_id=82618642]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 17.0
+offset_bottom = 17.0
 
 [node name="Panel" type="Panel" parent="." unique_id=1170700048]
 visible = false
@@ -78,5 +82,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="XtTick" to="." method="charge_battery"]
-[connection signal="mouse_entered" from="ColorRect" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Control" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control" to="." method="_on_mouse_exited"]
