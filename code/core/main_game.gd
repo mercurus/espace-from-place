@@ -1,7 +1,6 @@
 class_name MainGame extends Node
 ## Main entry point for the game
 ## Responsible for coordination, not micro-managing
-## HELLO WORLD
 
 const PLAYER_SCENE_UID:String = "uid://coho61s7devlj"
 

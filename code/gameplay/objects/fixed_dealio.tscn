@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dq2vvgx6d3yih"]
 
 [ext_resource type="Script" uid="uid://dvjsj317qbynw" path="res://code/gameplay/objects/fixed_dealio.gd" id="1_iwc6r"]
+[ext_resource type="Texture2D" uid="uid://c0w56dqv35xsg" path="res://assets/world/environment/scifiEnvironment_14.png" id="2_nud51"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2xxe"]
 radius = 30.0
@@ -9,6 +10,7 @@ radius = 30.0
 script = ExtResource("1_iwc6r")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1843099683]
+visible = false
 offset_left = -25.0
 offset_top = -26.0
 offset_right = 27.0
@@ -17,3 +19,6 @@ color = Color(0, 0, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1807875907]
 shape = SubResource("CircleShape2D_f2xxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=30212360]
+texture = ExtResource("2_nud51")

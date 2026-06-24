@@ -12,14 +12,11 @@ signal nether_field_exited
 
 @export var debug: bool
 @export var current_xt: float
-@export var max_xt: float
+@export var max_xt: int
 @export var nether_field_size: float
 
 func _ready() -> void:
 	change_nether_field_size(nether_field_size)
-	change_xt_value(500.0)
-	connect("change_xt", change_xt_value)
-
 
 # Nether Field
 func change_nether_field_size(new_value):
