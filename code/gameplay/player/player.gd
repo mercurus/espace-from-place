@@ -9,7 +9,7 @@ var can_shoot = false
 @export var xt_max_zone_charge: float
 @export var xt_charge_amount: float
 @export var xt_charge_rate: float
-var xt_current: float = 0
+var xt_current: float = 200
 var xt_expend_amount: float = 0.25
 
 var in_nether_zone: bool = false
@@ -53,18 +53,13 @@ func _physics_process(delta:float):
 
 
 func xt_charge_in_zone():
-	if xt_current < xt_max_zone_charge:
-		xt_current += xt_charge_amount
-		emit_signal("change_xt", xt_current)
-
-
-
+	#if xt_current < xt_max_zone_charge:
+	xt_current += xt_charge_amount
+	emit_signal("change_xt", xt_current)
 
 
 func _on_cspg_body_entered(body: Node2D) -> void:
 	in_nether_zone = true
 
-
 func _on_cspg_body_exited(body: Node2D) -> void:
 	in_nether_zone = false
-	print("area exited")

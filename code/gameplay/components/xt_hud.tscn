@@ -2,12 +2,21 @@
 
 [ext_resource type="Script" uid="uid://pptf311bgs2e" path="res://xt_hud.gd" id="1_xx10b"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx10b"]
-bg_color = Color(0.27450982, 0.27450982, 0.27450982, 0.4745098)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydcfd"]
+bg_color = Color(0, 0, 0, 0.48235294)
 corner_radius_top_left = 7
 corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28uj7"]
+bg_color = Color(1, 0, 1, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w35pn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w35pn"]
 bg_color = Color(0, 1, 1, 1)
@@ -23,6 +32,18 @@ offset_right = 537.0
 offset_bottom = 60.0
 script = ExtResource("1_xx10b")
 
+[node name="ProgressBar2" type="ProgressBar" parent="." unique_id=238508761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ydcfd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_28uj7")
+max_value = 1000.0
+show_percentage = false
+
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=343115195]
 layout_mode = 1
 anchors_preset = 15
@@ -30,13 +51,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_xx10b")
+theme_override_styles/background = SubResource("StyleBoxEmpty_w35pn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_w35pn")
 max_value = 1000.0
 value = 200.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="ProgressBar" unique_id=1043124959]
+[node name="Label" type="Label" parent="." unique_id=1043124959]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
