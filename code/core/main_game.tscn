@@ -32,6 +32,9 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="World/EntityRoot" unique_id=779665878 instance=ExtResource("2_i4a04")]
 z_index = 1
 position = Vector2(1037, 649)
+xt_max = 1000.0
+xt_max_zone_charge = 200.0
+xt_charge_amount = 1.0
 
 [node name="Pushable" parent="World/EntityRoot" unique_id=2013581968 instance=ExtResource("2_5s2p2")]
 position = Vector2(224, 761)
@@ -69,6 +72,7 @@ position = Vector2(842, 909)
 [node name="CSPG" parent="World/EntityRoot" unique_id=1688478759 instance=ExtResource("5_1hokm")]
 position = Vector2(851, 638)
 debug = false
+max_xt = 1000
 
 [node name="Geyser" parent="World/EntityRoot" unique_id=1579410989 instance=ExtResource("6_ti5ek")]
 position = Vector2(1093, 516)
@@ -86,12 +90,19 @@ z_index = 5
 layout_mode = 3
 anchors_preset = 0
 
-[node name="XtHud" parent="HudLayer/HudRoot" unique_id=317660793 instance=ExtResource("6_pmubr")]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 12.0
-offset_right = 222.0
-offset_bottom = 46.0
+[node name="XtHud" parent="HudLayer/HudRoot" unique_id=426387158 instance=ExtResource("6_pmubr")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 32.0
+offset_right = 981.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Dialogue" type="Control" parent="HudLayer" unique_id=1724864388]
 layout_mode = 3
@@ -101,6 +112,7 @@ offset_bottom = 40.0
 script = ExtResource("9_mqvxp")
 
 [node name="Panel" parent="HudLayer/Dialogue" unique_id=193597712 instance=ExtResource("10_mqvxp")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,7 +145,6 @@ offset_top = 18.0
 offset_right = -9.0
 offset_bottom = 58.0
 
-[connection signal="change_xt" from="World/EntityRoot/Player" to="World/EntityRoot/CSPG" method="_on_player_change_xt"]
-[connection signal="area_entered" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_area_entered"]
-[connection signal="area_exited" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_area_exited"]
-[connection signal="xt_changed" from="World/EntityRoot/CSPG" to="HudLayer/HudRoot/XtHud" method="_on_cspg_xt_changed"]
+[connection signal="change_xt" from="World/EntityRoot/Player" to="HudLayer/HudRoot/XtHud" method="_on_player_change_xt"]
+[connection signal="body_entered" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_body_entered"]
+[connection signal="body_exited" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_cspg_body_exited"]

@@ -6,11 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2xxe"]
 radius = 42.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b714"]
-size = Vector2(66, 66)
-
 [node name="Player" type="CharacterBody2D" unique_id=1790078715]
 script = ExtResource("1_74kp1")
+xt_max = 1000
+xt_max_zone_charge = 200
+xt_charge_amount = 1
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=895529121]
 offset_left = -33.0
