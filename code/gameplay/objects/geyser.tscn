@@ -4,16 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://dbxljnk6uvvgy" path="res://assets/world/environment/scifiEnvironment_04.png" id="2_t2m71"]
 [ext_resource type="Texture2D" uid="uid://cgdruudibv30s" path="res://assets/images/sprites/spaceBuilding_009.png" id="3_t2m71"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6a2e"]
-size = Vector2(100, 100)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywxc3"]
+radius = 600.0
 
-[node name="Geyser" type="Area2D" unique_id=1579410989]
+[node name="Geyser" type="Area2D" unique_id=583708190 groups=["Power Zone"]]
 script = ExtResource("1_rqxl3")
 debug = true
 gas_remaining = 1000.0
 
-[node name="DeployArea" type="CollisionShape2D" parent="." unique_id=457159387]
-shape = SubResource("RectangleShape2D_l6a2e")
+[node name="DiscoverZone" type="CollisionShape2D" parent="." unique_id=124113979]
+shape = SubResource("CircleShape2D_ywxc3")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1539891704]
 position = Vector2(-5, 10)
@@ -39,5 +39,4 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.3254902, 0.21568628, 1)
 
-[connection signal="area_entered" from="." to="." method="_on_geyser_build_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_geyser_build_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

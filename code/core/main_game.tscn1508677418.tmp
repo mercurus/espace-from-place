@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cc58qrikbav6y" path="res://code/gameplay/objects/geyser_pg.tscn" id="7_pew57"]
 [ext_resource type="PackedScene" uid="uid://du5jv7a3b6uft" path="res://code/gameplay/components/storm_timer.tscn" id="9_mqvxp"]
 [ext_resource type="PackedScene" uid="uid://bfe1tqx26rtcb" path="res://code/gameplay/components/dialogue.tscn" id="10_mqvxp"]
-[ext_resource type="Script" uid="uid://dr5l6upqo4y1m" path="res://code/gameplay/components/alerts.gd" id="10_wkapo"]
 
 [node name="MainGame" type="Node" unique_id=1234707930]
 script = ExtResource("1_aldqj")
@@ -122,28 +121,6 @@ offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Alerts" type="Label" parent="HudLayer/HudRoot" unique_id=871600205]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 176.0
-offset_top = 382.0
-offset_right = 1473.0
-offset_bottom = 560.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 100
-text = "YOU DIED"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("10_wkapo")
-
 [node name="Dialogue" type="Control" parent="HudLayer" unique_id=1724864388]
 layout_mode = 3
 anchors_preset = 0
@@ -180,7 +157,6 @@ offset_right = -9.0
 offset_bottom = 58.0
 
 [connection signal="change_xt" from="World/EntityRoot/Player" to="HudLayer/HudRoot/XtHud" method="_on_player_change_xt"]
-[connection signal="fuel_empty" from="World/EntityRoot/Player" to="HudLayer/HudRoot/Alerts" method="write_stuff"]
 [connection signal="power_field_entered" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_enter_power_field"]
 [connection signal="power_field_exited" from="World/EntityRoot/CSPG" to="World/EntityRoot/Player" method="_on_exit_power_field"]
 [connection signal="geyser_discovery_entered" from="World/EntityRoot/Geyser" to="HudLayer/Dialogue/Panel" method="_on_geyser_discovery"]

@@ -3,30 +3,11 @@ extends Area2D
 @export var debug: bool
 @export var gas_remaining: float
 
-var has_geyser_pg: bool
+signal geyser_discovery_entered
 
 func _ready() -> void:
-	erupt_geyser()
-	
+	pass
 
-#Conncet to geyser pg
-func change_gas_remaining(amount):
-	gas_remaining -= amount
-	if debug:
-		print("Geyser %s gas remaining: %s" % [self, gas_remaining])
-
-
-#Connect to away ship
-func _on_geyser_build_area_entered(area: Area2D) -> void:
-	if debug:
-		print("Geyser build area entered: %s" % area)
-
-#Connect to away ship
-func _on_geyser_build_area_exited(area: Area2D) -> void:
-	if debug:
-		print("Geyser build area exited: %s" % area)
-
-func erupt_geyser():
-	
-	if debug:
-		print("Geyser %s has erupted" % self)
+func _on_body_entered(body: Node2D) -> void:
+	if body.get_name() == "Player":
+		emit_signal("geyser_discovery_entered")

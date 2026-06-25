@@ -8,7 +8,7 @@ const PLAYER_SCENE_UID:String = "uid://coho61s7devlj"
 @onready var entity_root:Node2D = $World/EntityRoot
 @onready var effect_root:Node2D = $World/EffectRoot
 
-var player:Player
+var player: Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

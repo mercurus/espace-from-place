@@ -7,8 +7,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2xxe"]
 radius = 39.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ynfqq"]
+radius = 33.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1790078715]
 script = ExtResource("1_74kp1")
+xt_current = 0.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=895529121]
 visible = false
@@ -18,9 +22,13 @@ offset_right = 33.0
 offset_bottom = 33.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=889126652]
+visible = false
 shape = SubResource("CircleShape2D_f2xxe")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1615252274]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=829994974]
+shape = SubResource("CircleShape2D_ynfqq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34807028]
 position_smoothing_enabled = true
@@ -29,3 +37,6 @@ script = ExtResource("2_qrvft")
 
 [node name="Ship" type="Sprite2D" parent="." unique_id=649227751]
 texture = ExtResource("3_i833x")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_power_zone_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_power_zone_exited"]

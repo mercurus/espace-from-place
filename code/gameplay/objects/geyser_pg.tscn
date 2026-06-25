@@ -3,29 +3,25 @@
 [ext_resource type="Script" uid="uid://ifp7houwjlmt" path="res://code/gameplay/objects/geyser_pg.gd" id="1_7rv2k"]
 [ext_resource type="Texture2D" uid="uid://bv1u073o1i23b" path="res://assets/images/sprites/meteor_detailedSmall.png" id="2_a1gg7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywxc3"]
-size = Vector2(25, 21)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm8uq"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlmdw"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="GeyserPG" type="Area2D" unique_id=756198849 node_paths=PackedStringArray("progress_bar", "geyser_sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywxc3"]
+radius = 100.0
+
+[node name="GeyserPG" type="Area2D" unique_id=756198849 node_paths=PackedStringArray("progress_bar", "geyser_sprite", "power_zone")]
 script = ExtResource("1_7rv2k")
 progress_bar = NodePath("ProgressBar")
 geyser_sprite = NodePath("GeyserSprite")
+power_zone = NodePath("PowerZone")
 hp = 100
 max_battery_charge = 1000
 deploy_ramp_time = 2.0
 xt_tick_charge_amount = 10
 xt_tick_rate = 2.0
-
-[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1949363469]
-z_index = 2
-position = Vector2(0.75, 0.5)
-shape = SubResource("RectangleShape2D_ywxc3")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1979971470]
 custom_minimum_size = Vector2(25, 0)
@@ -52,13 +48,18 @@ position = Vector2(1, 0.50000024)
 scale = Vector2(0.421875, 0.3203125)
 texture = ExtResource("2_a1gg7")
 
+[node name="PowerZone" type="CollisionShape2D" parent="." unique_id=1949363469]
+position = Vector2(0.75, 0.5)
+shape = SubResource("CircleShape2D_ywxc3")
+disabled = true
+
 [node name="Control" type="Control" parent="." unique_id=82618642]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 17.0
-offset_bottom = 17.0
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 29.0
+offset_bottom = 29.0
 
 [node name="Panel" type="Panel" parent="." unique_id=1170700048]
 visible = false
@@ -81,6 +82,8 @@ text = "Charge"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="XtTick" to="." method="charge_battery"]
 [connection signal="mouse_entered" from="Control" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Control" to="." method="_on_mouse_exited"]

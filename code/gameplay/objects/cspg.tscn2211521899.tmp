@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ru0q3sk72gn8" path="res://assets/images/sprites/spaceRockets_003.png" id="1_6kin6"]
 [ext_resource type="Script" uid="uid://ba8f0th06snoe" path="res://code/gameplay/objects/cspg.gd" id="1_rls3y"]
+[ext_resource type="Script" uid="uid://dh2bkinobp4y4" path="res://code/gameplay/objects/draw_power_field.gd" id="2_i4ok5"]
 [ext_resource type="Texture2D" uid="uid://026sbqtqoxfb" path="res://assets/images/sprites/spaceBuilding_019.png" id="4_p72co"]
 [ext_resource type="Texture2D" uid="uid://cmwe0qbsgm2ua" path="res://assets/images/sprites/scifiStructure_01.png" id="5_p72co"]
 
@@ -15,6 +16,7 @@ power_field_size = 200.0
 
 [node name="PowerField" type="CollisionShape2D" parent="." unique_id=1763274868 groups=["Power Zone"]]
 shape = SubResource("CircleShape2D_ynfqq")
+script = ExtResource("2_i4ok5")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=102774059]
 visible = false
