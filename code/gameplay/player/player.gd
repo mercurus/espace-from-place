@@ -20,9 +20,9 @@ signal change_xt
 signal fuel_empty
 
 func attack():
-	var attack = Attack.new()
-	attack.damage = 2
-	return attack
+	var new_attack = Attack.new()
+	new_attack.damage = 2
+	return new_attack
 
 func _process(delta: float) -> void:
 	if xt_current <= 0:
