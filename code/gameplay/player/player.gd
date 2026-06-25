@@ -11,17 +11,22 @@ var can_shoot = false
 @export var xt_max_zone_charge: float
 @export var xt_charge_amount: float
 @export var xt_charge_rate: float
-var xt_current: float = 200
+@export var xt_current: float = 200
 var xt_expend_amount: float = 0.25
 
 var in_power_zone: bool = false
 var geyser_pg_count: int = 1
 signal change_xt
+signal fuel_empty
 
 func attack():
 	var new_attack = Attack.new()
 	new_attack.damage = 2
 	return new_attack
+
+func _process(delta: float) -> void:
+	if xt_current <= 0:
+		you_died("YOU RAN OUT OF ENERGY")
 
 func _physics_process(delta:float):
 	if xt_current > 0:
@@ -56,15 +61,16 @@ func _physics_process(delta:float):
 	ship_sprite.rotate(.01)
 
 func xt_charge_in_zone():
-	#if xt_current < xt_max_zone_charge:
-	xt_current += xt_charge_amount
-	emit_signal("change_xt", xt_current)
+	if xt_current < xt_max_zone_charge:
+		xt_current += xt_charge_amount
+		emit_signal("change_xt", xt_current)
 
+func _on_enter_power_field():
+	in_power_zone = true
 
-func _on_cspg_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Power Zone"):
-		in_power_zone = true
+func _on_exit_power_field():
+	in_power_zone = false
 
-func _on_cspg_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Power Zone"):
-		in_power_zone = false
+func you_died(label_text):
+	emit_signal("fuel_empty", label_text)
+	self.position = ($"../CSPG".position)

@@ -599,7 +599,6 @@ process_mode = 1
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=380944460]
 
 [node name="ColorRect" type="ColorRect" parent="World/LevelRoot" unique_id=68282118]
-visible = false
 offset_right = 1600.0
 offset_bottom = 1200.0
 color = Color(1, 0, 0, 0.20784314)
