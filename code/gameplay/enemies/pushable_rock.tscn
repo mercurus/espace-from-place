@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bve050a6ykwef"]
+
+[ext_resource type="Script" uid="uid://cospd1mniqjtw" path="res://code/gameplay/enemies/pushable_rock.gd" id="1_v3wsf"]
+[ext_resource type="Texture2D" uid="uid://brwfag4sm0nox" path="res://assets/world/environment/rocks.png" id="2_kww2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2xxe"]
+radius = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg6pj"]
+atlas = ExtResource("2_kww2s")
+
+[node name="PushableRock" type="CharacterBody2D" unique_id=979537178]
+script = ExtResource("1_v3wsf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=322552170]
+shape = SubResource("CircleShape2D_f2xxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2114999742]
+texture = SubResource("AtlasTexture_fg6pj")
+hframes = 8

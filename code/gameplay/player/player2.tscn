@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bd3s4w0x0xnif"]
+
+[ext_resource type="Script" uid="uid://cg6xclepl3fm7" path="res://code/gameplay/player/player2.gd" id="1_i66pi"]
+[ext_resource type="Script" uid="uid://dl0rv3wy85tdk" path="res://code/gameplay/player/dynamic_camera.gd" id="2_6ky1x"]
+[ext_resource type="Texture2D" uid="uid://1df53mm85i32" path="res://assets/characters/away_ship.png" id="3_i66pi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtfw7"]
+radius = 14.0
+height = 50.0
+
+[node name="Player2" type="CharacterBody2D" unique_id=1790078715]
+script = ExtResource("1_i66pi")
+knockback_force = 50.0
+friction = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=889126652]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vtfw7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1615252274]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=34807028]
+scale = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.5
+script = ExtResource("2_6ky1x")
+
+[node name="Ship" type="Sprite2D" parent="." unique_id=649227751]
+texture = ExtResource("3_i66pi")
